@@ -12,10 +12,11 @@ def dataset_individuals(zip_folder):
             with zipfile.ZipFile(zip_path) as all_txt:
                 for zips_individuals in all_txt.namelist():
                     if  "usu_individual" in zips_individuals.lower() and zips_individuals.endswith(".txt"):
-                        print(f'atroden {zips_individuals}')
                         with all_txt.open(zips_individuals) as txt_individuals:
                             reader = csv.DictReader(txt_individuals.read().decode('utf-8').splitlines(), delimiter=';')
                             all_individuals.extend(reader)
+    # Verificación
+    print(f"✅ Se cargaron {len(all_individuals)} registros de individuos.")
     return all_individuals
 
 def dataset_hogares(zip_folder):
