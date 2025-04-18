@@ -29,11 +29,11 @@ def   MATERIAL_TECHUMBRE (list_disc_hogar):
     material_precario = ['5','6','7']
    
     for i,dict in enumerate(list_disc_hogar):
-        valor = dict['V4'].strip()
-        if int(valor) in material_durable: # valor de 1 a 4 = Material durable
-            list_disc_hogar[i]['MATERIAL_TECHUMBRE'] = 'Material durable'         
-        elif int(valor)in material_precario: # valor de 5 a 7 = Material precario
-            list_disc_hogar[i]['MATERIAL_TECHUMBRE'] = 'Material precario'
+        valor = dict['IV4'].strip()
+        if valor in material_precario: # valor de 5 a 7 = Material precario
+            dict['MATERIAL_TECHUMBRE'] = 'Material precario'        
+        elif valor in material_durable: # valor de 1 a 4 = Material durable
+            dict['MATERIAL_TECHUMBRE'] = 'Material durable'   
         else:
-            list_disc_hogar[i]['MATERIAL_TECHUMBRE'] = 'No aplica'
+            dict['MATERIAL_TECHUMBRE'] = 'No aplica'
     return list_disc_hogar
