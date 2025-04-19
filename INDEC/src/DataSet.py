@@ -44,10 +44,10 @@ def dataset_hogares(zip_folder):
                 for zips_hogares in all_txt.namelist():
                     if  "usu_hogar" in zips_hogares.lower() and zips_hogares.endswith(".txt"):
                         with all_txt.open(zips_hogares) as txt_hogares:
-                            reader = csv.DictReader(txt_hogares.read().decode('utf-8'), delimiter=';')
+                            reader = csv.DictReader(txt_hogares.read().decode('utf-8').splitlines(), delimiter=';')
                             all_hogares.extend(reader)
     # Verificación
-    print(f"✅ Se cargaron {len(all_hogares)} registros de individuos.")
+    print(f"✅ Se cargaron {len(all_hogares)} registros de hogares.")
     return all_hogares
 
 #RECIBO LA LISTA DE DICCIONARIOS Y CREO UN ARCHIVO CSV CON ESOS DATOS EN CARPETA DATA
